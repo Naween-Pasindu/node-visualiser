@@ -1,11 +1,13 @@
 import { Component, createSignal, onMount } from "solid-js";
 
 import styles from "./styles.module.css";
+import ButtonComponent from "../ButtonsComponent";
 
 const BoardComponent : Component = () => {
     const [grabbingBoard, SetGrabbingBoard] = createSignal<boolean>(false);
     const [scale, SetScale] = createSignal<number>(1);
     const [clickedPosition, SetClickedPosition] = createSignal<{x : number, y : number}>({x:1, y:1});
+    const [selectedNode, SetSelectedNode] = createSignal<string | null>(null)
 
     onMount(()=>{
         const boardElement = document.getElementById("board");
@@ -44,7 +46,15 @@ const BoardComponent : Component = () => {
         }
     }
 
+    function handleOnClickAdd(){
+
+    }
+
+    function handleOnClickDelete(){
+
+    }
     return <div id="boardWrapper" class={styles.wrapper}>
+        <ButtonComponent showDelete={false} onClickAdd={handleOnClickAdd} onClickDelete={handleOnClickDelete}/>
         <div id="board" class={grabbingBoard() ? styles.boardDragging : styles.board}
         onMouseDown={handleOnMouseDown}
         onMouseUp={handleOnMouseUp}

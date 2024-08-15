@@ -1,0 +1,85 @@
+.wrapper{
+    position: fixed;
+    top: 00px;
+    left: 0px;
+    width: 100vw;
+    padding: 24px 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    z-index: 150;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.buttonAdd{
+    transition: all ease 0.2s;
+    background-color: #4f46e5;
+    padding: 12px;
+    border-radius: 100%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    pointer-events: all;
+    box-shadow: 1px 1px 11px -6px rgba(0, 0, 0, 0.75);
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonAdd:hover{
+    background-color: #3728a3;
+    box-shadow: 2px 2px 12px -6px rgba(0, 0, 0, 0.75);
+    transform: scale(1.05);
+}
+
+.buttonAdd:active{
+    transform: scale(0.95);
+}
+
+.buttonDelete{
+    transition: all ease 0.2s;
+    background-color: #dc2626;
+    padding: 12px;
+    border-radius: 100%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    pointer-events: all;
+    box-shadow: 1px 1px 11px -6px rgba(0, 0, 0, 0.75);
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDelete:hover{
+    background-color: #b91c1c;
+    box-shadow: 2px 2px 12px -6px rgba(0, 0, 0, 0.75);
+    transform: scale(1.05);
+}
+
+.buttonDelete:active{
+    transform: scale(0.95);
+}
+
+.buttonDeleteHidden{
+    transform: translateY(-100px);
+    background-color: #dc2626;
+    padding: 12px;
+    border-radius: 100%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    pointer-events: all;
+    box-shadow: 1px 1px 11px -6px rgba(0, 0, 0, 0.75);
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-import BoardComponent from './BoardComponents';
+import BoardComponent from './BoardComponent';
 
 
 import './index.css';
