@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, onCleanup } from "solid-js";
 import styles from "./styles.module.css"
 
 
@@ -6,6 +6,12 @@ interface ButtonProps {
     showDelete : boolean;
     onClickAdd : (numberInputs : number, numberOutputs : number) => void;
     onClickDelete : () => void;
+}
+
+function clickOutside(el: any,accessor: any){
+    const onClick = (e: any) => !el.contains(e.target) && accessor()?.();
+    document.body.addEventListener("click", onClick);
+    onCleanup(() => document.body.removeEventListener("click", onClick));
 }
 
 const ButtonComponent : Component<ButtonProps> = (props : ButtonProps) => {
@@ -31,6 +37,11 @@ const ButtonComponent : Component<ButtonProps> = (props : ButtonProps) => {
         event.stopPropagation();
         SetIsOpen(true);
     }
+    function handleClickOutsideDropdown(){
+        SetNumberInputs(0);
+        SetNumberOutputs(0);
+        SetIsOpen(false);
+    }
 
     return <div class={styles.wrapper}>
         <button class={props.showDelete ? styles.buttonDelete : styles.buttonDeleteHidden} onClick={props.onClickDelete}>
@@ -39,7 +50,10 @@ const ButtonComponent : Component<ButtonProps> = (props : ButtonProps) => {
         <button class={styles.buttonAdd} onclick={handleOnClickAdd}>
         <svg fill="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="1em" width="1em" style="overflow: visible; color: currentcolor;"><path d="M14 7v1H8v6H7V8H1V7h6V1h1v6h6z"></path></svg>
         </button>
-        <div class={isOpen() ? styles.dropdown : styles.dropdownHidden}>
+        <div class={isOpen() ? styles.dropdown : styles.dropdownHidden}
+        //@ts-ignore
+        use:clickOutside={handleClickOutsideDropdown}
+        >
             <label class={styles.lable}>Number of inputs</label>
             <input type="number" class={styles.input} value={numberInputs()} onInput={handleChangeNumberInputs}/>
             <label class={styles.lable}>Number of outputs</label>
