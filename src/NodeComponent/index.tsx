@@ -1,7 +1,5 @@
 import { Accessor, Component, For, createEffect, createSignal } from "solid-js";
-import { styles } from "./styles.module.css";
-import _default from "@xyflow/react/dist/esm/container/ReactFlow";
-
+import styles from "./styles.module.css";
 
 interface NodeProps {
     id : string;
